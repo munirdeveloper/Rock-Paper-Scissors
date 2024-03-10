@@ -27,13 +27,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-/* const playerSelection = "rock";
+const playerSelection = "rock";
 const computerSelection = getComputerChoice();
-console.log("Player chooses: " + playerSelection);
+const result = playRound(playerSelection, computerSelection);
+/* console.log("Player chooses: " + playerSelection);
 console.log("Computer chooses: " + computerSelection);
 console.log(playRound(playerSelection, computerSelection)); */
 
-function playGame(playRound) {
+/* function playGame(playRound) {
     for (let i = 1; i <= 5; i++) { // Change the loop condition to iterate 5 times
         const playerSelection = "rock"; // You might want to change this if you want player input
         const computerSelection = getComputerChoice();
@@ -44,4 +45,22 @@ function playGame(playRound) {
     }
 }
 
-playGame(playRound);
+playGame(playRound); */
+
+function handleButtonClick(playerSelection) {
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+    const resultContainer = document.getElementById("result-container");
+    resultContainer.textContent = "Player chooses: " + playerSelection + ". Computer chooses: " + computerSelection + ". " + result;
+}
+
+const buttons = document.querySelectorAll(".buttons button");
+
+buttons.forEach(button => {
+    button.addEventListener("click", function() {
+        const playerSelection = this.textContent; // get the text content of the clicked button
+        handleButtonClick(playerSelection);
+    });
+});
+
+
